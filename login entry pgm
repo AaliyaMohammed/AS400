@@ -1,0 +1,22 @@
+HOPTION(*NODEBUGIO :*SRCSTMT)                                          
+FLOGIN     IF   E           K DISK                                     
+FLOGINDSP  CF   E             WORKSTN                                  
+C                   EXFMT     CONTACT                                  
+C                   DOW       *IN03 = *OFF                             
+C                   EXFMT     LOGINREC                                 
+C                   EXSR      VERIFY                                   
+C                   ENDDO                                              
+C                   EVAL      *INLR = *ON                              
+C     VERIFY        BEGSR                                              
+C     DUSERID       CHAIN     LOGIN                                    
+C                   IF        %FOUND(LOGIN) AND DPASSWORD = PASSWORD   
+C                   CLEAR                   DERRORMSG                  
+C                   CLEAR                   DSUCCESS                   
+C                   EVAL      DSUCCESS   = 'LOGIN SUCCESSFULLY'        
+C                   CALL      'MENUCALL'                               
+C                   CLEAR                   DERRORMSG                  
+C                   CLEAR                   DSUCCESS                   
+C                   ELSE                                               
+ C                   EVAL      DERRORMSG = 'INVALID CREDENTIAL'   
+ C                   ENDIF                                        
+ C                   ENDSR                                        
